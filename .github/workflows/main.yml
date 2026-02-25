@@ -50,9 +50,10 @@ jobs:
           
       - name: Generate Terminal SVG
         run: |
-          GHT=${{ secrets.GHT }} node dist/bin/github-stats-terminal.js ${{ github.repository_owner }} hacker
+          node dist/bin/github-stats-terminal.js ${{ github.repository_owner }} hacker
         env:
           GHT: ${{ secrets.GHT }}
+          ABOUT_FILE: assets/about.py
           
       # Commiting
       - name: Github Configurations

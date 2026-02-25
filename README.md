@@ -11,7 +11,6 @@
   <img align="center" src="./github_stats.svg?v=latest">
 </p>
 
-
 This repository generates a dynamic SVG card that displays your GitHub statistics with a **terminal interface aesthetic**. Unlike static images, this card features a slick **typing animation**, making your profile feel alive and active.
 
 It is fully automated using GitHub Actions, so your stats are always up-to-date without any manual work.
@@ -31,9 +30,11 @@ It is fully automated using GitHub Actions, so your stats are always up-to-date 
 Follow these steps to add this to your profile in less than 5 minutes.
 
 ### 1. Create a Repository
+
 You can either [fork this repository](https://github.com/yogeshwaran01/github-stats-terminal-style/fork) or use it as a template to create a new one.
 
 ### 2. Generate a Personal Access Token (PAT)
+
 To allow the script to read your stats and update the SVG, you need a GitHub Token.
 
 1. Go to **Settings** → **Developer settings** → **Personal access tokens** → **Tokens (classic)**.
@@ -44,6 +45,7 @@ To allow the script to read your stats and update the SVG, you need a GitHub Tok
 4. Click **Generate token** and **copy it immediately**.
 
 ### 3. Add the Token as a Secret
+
 1. Go to your repository's **Settings** tab.
 2. Navigate to **Secrets and variables** → **Actions**.
 3. Click **New repository secret**.
@@ -52,12 +54,14 @@ To allow the script to read your stats and update the SVG, you need a GitHub Tok
 6. Click **Add secret**.
 
 ### 4. Enable Workflow Permissions
+
 1. Go to **Settings** → **Actions** → **General**.
 2. Scroll down to **Workflow permissions**.
 3. Select **Read and write permissions**.
 4. Click **Save**.
 
 ### 5. Run the Workflow
+
 1. Go to the **Actions** tab in your repository.
 2. Click on the **Update Github Stats** workflow on the left.
 3. Click **Run workflow**.
@@ -76,6 +80,24 @@ You can change the appearance of your terminal by modifying the workflow file.
 
 ```bash
 node dist/bin/github-stats-terminal.js ${{ github.repository_owner }} <themeName>
+```
+
+### Show Python code with `cat about.py`
+
+By default, this project reads `assets/about.py` and renders it as a terminal command output:
+
+```bash
+cat assets/about.py
+```
+
+You can customize the file name with `ABOUT_FILE`:
+
+```yaml
+- name: Generate Terminal SVG
+  run: node dist/bin/github-stats-terminal.js ${{ github.repository_owner }} hacker
+  env:
+    GHT: ${{ secrets.GHT }}
+    ABOUT_FILE: assets/about.py
 ```
 
 |                                                             **Theme Sample**                                                             | **Theme Name** |                                                                **Theme Sample**                                                                | **ThemeName** |
@@ -99,24 +121,26 @@ By default, the stats update every day at 02:47 UTC. To change this:
 on:
   schedule:
     # Runs every day at 2:47 UTC
-    - cron: '47 2 * * *'
+    - cron: "47 2 * * *"
 ```
 
 You can use [crontab.guru](https://crontab.guru/) to generate a custom schedule.
 
 ## 📦 Usage in Profile
+
 Once your `github_s❤️tats.svg` is generated, you can add it to your profile README.md or anywhere
 
 ## 🤝 Contributing
 
 Contributions are welcome! If you want to add a new theme or feature:
+
 1. Fork the project.
 2. Create your feature branch (git checkout -b feature/AmazingTheme).
 3. Commit your changes.
 4. Open a Pull Request.
 
 ## 📄 License
-This project is licensed under the [MIT License](https://github.com/yogeshwaran01/github-stats-terminal-style/blob/master/LICENSE).
 
+This project is licensed under the [MIT License](https://github.com/yogeshwaran01/github-stats-terminal-style/blob/master/LICENSE).
 
 **Thank You ❤️**
