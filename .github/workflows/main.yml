@@ -53,7 +53,7 @@ jobs:
           node dist/bin/github-stats-terminal.js ${{ github.repository_owner }} hacker
         env:
           GHT: ${{ secrets.GHT }}
-          ABOUT_FILE: assets/about.py
+          ABOUT_FILE: about.py
           
       # Commiting
       - name: Github Configurations
