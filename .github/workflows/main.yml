@@ -42,7 +42,7 @@ jobs:
       # Install requirements
       - name: Install requirements
         run: |
-          npm install
+          npm ci
 
       - name: Build
         run: |
@@ -64,5 +64,10 @@ jobs:
       - name: commiting generated terminal SVG
         run: |
           git add github_stats.svg
-          git commit -m "Github Stats updated 🎉" 
-          git push 
+          if git diff --cached --quiet; then
+            echo "No SVG changes to commit."
+            exit 0
+          fi
+
+          git commit -m "Github Stats updated 🎉"
+          git push
