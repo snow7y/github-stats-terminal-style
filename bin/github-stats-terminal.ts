@@ -8,6 +8,8 @@ import {TerminalService} from "../src/services/TerminalService";
 import {GithubUserStats} from "../src/types/github.types";
 import {NeoFetchInfo} from "../src/utils/formatter.utils";
 
+const CLEAR_SCREEN = "\u001b[2J\u001b[H";
+
 /**
  * Main function to execute the simple CLI workflow.
  */
@@ -76,6 +78,7 @@ async function main() {
       .addCommand("uptime", uptimeString);
 
     if (aboutFileContent) {
+      terminalService.addCommand("clear", CLEAR_SCREEN);
       terminalService.addCommand(`cat ${aboutFileName}`, aboutFileContent);
     }
 
